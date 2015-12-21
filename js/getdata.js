@@ -1,3 +1,4 @@
+$(document).ready(function(){
 var rackObj = {
   rackData: [],
   callData: $.get('https://data.seattle.gov/resource/fxh3-tqdm.json').done(function(){
@@ -18,6 +19,7 @@ var rackObj = {
     }
     return Math.sqrt(yDist * yDist + xDist * xDist)
   }
+
   // checkCall: $.ajax('https://data.seattle.gov/resource/fxh3-tqdm.json',
   // // {
   //   method: "GET",
@@ -29,4 +31,6 @@ var rackObj = {
 
 };
 
-rackobj.rackData = rockObj.callData();
+rackObj.rackData = rackObj.callData();
+
+});
