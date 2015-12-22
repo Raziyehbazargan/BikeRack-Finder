@@ -31,6 +31,7 @@ var rackObj = {
 
 };
 
-rackObj.rackData = rackObj.callData();
+rackObj.rackData = rackObj.callData;
+console.log(rackObj.rackData)
 
 });
