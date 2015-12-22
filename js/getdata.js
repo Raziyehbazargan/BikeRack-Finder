@@ -1,4 +1,3 @@
-$(document).ready(function(){
 var rackObj = {
   rackData: null,
   shortList: [],
@@ -21,15 +20,16 @@ var rackObj = {
     this.shortList = [];
     for (var i =0; i < this.rackData.responseJSON.length; i++){
       var rack = this.rackData.responseJSON;
-      if (netDistance(userLat, userLong, parseFloat(rack[i].latitude), parseFloat(rack[i].longitude)) < distance){
+      if (this.netDistance(userLat, userLong, parseFloat(rack[i].latitude), parseFloat(rack[i].longitude)) < distance){
         this.shortList.push(rack[i]);
       }
     }
   }
 
 };
-
 rackObj.rackData = rackObj.callData;
+
+$(document).ready(function(){
 console.log("this is the rackObj.rackData array:");
 console.log(rackObj.rackData);
 console.log("this is the responseJSON:");
