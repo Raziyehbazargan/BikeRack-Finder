@@ -1,6 +1,26 @@
+var uLat;
+var uLong;
+
+if (window.navigator.geolocation) {
+    var failure, success;
+    success = function(position) {
+      console.log(position);
+      console.log(position.coords.latitude);
+      uLat = position.coords.latitude;
+      uLong = position.coords.longitude;
+    };
+    failure = function(message) {
+      alert('Cannot retrieve location!');
+    };
+    navigator.geolocation.getCurrentPosition(success, failure, {
+      maximumAge: Infinity,
+      timeout: 5000
+    });
+}
+
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -33.8688, lng: 151.2195},
+    center: {lat: uLat, lng: uLong},
     zoom: 13
   });
   var input = /** @type {!HTMLInputElement} */(
