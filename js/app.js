@@ -1,12 +1,16 @@
-
-
 var brLats = [];
 var brLongs = [];
 
+function populate() {
+  for (var f = 0; f < rackObj.shortList.length; f++) {
+    brLats[f] = rackObj.shortList[f].latitude;
+    brLongs[f] = rackObj.shortList[f].longitude;
+  }
+}
+
 function initMap() {
-  var myLatLng = {lat: -25.363, lng: 131.044};
   var map = new google.maps.Map(document.getElementById('map'), {
-    center: myLatLng,
+    center: {lat: -33.8688, lng: 151.2195},
     zoom: 13
   });
   var input = /** @type {!HTMLInputElement} */(
@@ -21,7 +25,12 @@ function initMap() {
 
   var infowindow = new google.maps.InfoWindow();
   var marker = new google.maps.Marker({
-    position: myLatLng,
+    map: map,
+    anchorPoint: new google.maps.Point(0, -29)
+  });
+
+  var g = new google.maps.Marker({
+    position: {lat: parseFloat(rackObj.shortList[0].latitude), long: parseFloat(rackObj.shortList[0].longitude)},
     map: map,
     title: 'Hello World!'
   });
