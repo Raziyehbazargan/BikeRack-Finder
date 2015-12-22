@@ -3,6 +3,9 @@ var rackObj = {
   shortList: [],
   callData: $.getJSON('https://data.seattle.gov/resource/fxh3-tqdm.json?$limit=3000').done(function(){
     console.log("got data");
+    rackObj.rackData = rackObj.callData;
+    console.log("this is the responseJSON:");
+    console.log(rackObj.rackData.responseJSON);
   }),
   //returns net distance between user and rack in feet.
   netDistance: function(userLat, userLong, rackLat, rackLong){
@@ -27,22 +30,3 @@ var rackObj = {
   }
 
 };
-rackObj.rackData = rackObj.callData;
-
-$(document).ready(function(){
-console.log("this is the rackObj.rackData array:");
-console.log(rackObj.rackData);
-console.log("this is the responseJSON:");
-
-function logger(){
-  console.log(rackObj.rackData.responseJSON);
-}
-function delayedAlert(){
-  window.setTimeout(logger, 5000);
-}
-delayedAlert();
-
-console.log("this is a test of closeRacksFinder:");
-console.log(rackObj.closeRacksFinder(47.6675, -122.3761, 500));
-
-});
