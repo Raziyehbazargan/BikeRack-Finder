@@ -41,9 +41,10 @@ function initMap() {
 
   var infowindow = new google.maps.InfoWindow();
   var marker = new google.maps.Marker({
+    position: map.center,
     map: map,
-    anchorPoint: new google.maps.Point(0, -29)
-  });
+    title: 'Hello World!'
+});
 
   autocomplete.addListener('place_changed', function() {
     infowindow.close();
