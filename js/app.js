@@ -3,6 +3,12 @@ function initMap() {
     center: {lat: -33.8688, lng: 151.2195},
     zoom: 13
   });
+
+  // This event listener calls addMarker() when the map is clicked.
+  google.maps.event.addListener(map, 'click', function(event) {
+    addMarker(event.latLng, map);
+  });
+
   var input = /** @type {!HTMLInputElement} */(
       document.getElementById('pac-input'));
 
@@ -72,6 +78,27 @@ function initMap() {
   setupClickListener('changetype-establishment', ['establishment']);
   setupClickListener('changetype-geocode', ['geocode']);
 }
+
+var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var labelIndex = 0;
+var latitude_new;
+var longitude_new;
+// Adds a marker to the map.
+function addMarker(location, map) {
+  // Add the marker at the clicked location, and add the next-available label
+  // from the array of alphabetical characters.
+  var marker = new google.maps.Marker({
+    position: location,
+    label: labels[labelIndex++ % labels.length],
+    map: map
+  });
+google.maps.event.addListener(map,'mousemove',function(event) {
+    latitude_new = event.latLng.lat()
+    longitude_new = event.latLng.lng()
+  });
+  google.maps.event.addDomListener(window, 'load', initMap);
+}
+  // ..........................................................................
 
 // var geo = navigator.geolocation;
 // //console.log(geo.getCurrentPosition());
