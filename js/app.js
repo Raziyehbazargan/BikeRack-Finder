@@ -1,6 +1,12 @@
+
+
+var brLats = [];
+var brLongs = [];
+
 function initMap() {
+  var myLatLng = {lat: -25.363, lng: 131.044};
   var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -33.8688, lng: 151.2195},
+    center: myLatLng,
     zoom: 13
   });
   var input = /** @type {!HTMLInputElement} */(
@@ -15,8 +21,9 @@ function initMap() {
 
   var infowindow = new google.maps.InfoWindow();
   var marker = new google.maps.Marker({
+    position: myLatLng,
     map: map,
-    anchorPoint: new google.maps.Point(0, -29)
+    title: 'Hello World!'
   });
 
   autocomplete.addListener('place_changed', function() {
