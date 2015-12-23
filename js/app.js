@@ -4,7 +4,6 @@ var latLongStorageArray=[];
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
 
-
 if (window.navigator.geolocation) {
     var failure, success;
     success = function(position) {
@@ -23,7 +22,7 @@ if (window.navigator.geolocation) {
 }
 
 function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
+   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: uLat, lng: uLong},
     zoom: 13
   });
@@ -34,8 +33,8 @@ function initMap() {
     latLongStorageArray.push({lat:event.latLng.lat() ,lng:event.latLng.lng()});
     addMarker(event.latLng, map); //call addMarker function
     localStorage.setItem('userMarkers', JSON.stringify(latLongStorageArray));
-    google.maps.event.addDomListener(window, 'load', initMap);
     });
+    // google.maps.event.addDomListener(window, 'load', initMap);
     // ........................................................................
 
   var input = /** @type {!HTMLInputElement} */(
@@ -53,7 +52,10 @@ function initMap() {
     position: map.center,
     map: map,
     title: 'Hello World!'
+
 });
+//call function
+  showMarker();
 
   autocomplete.addListener('place_changed', function() {
     infowindow.close();
@@ -107,47 +109,34 @@ function initMap() {
   setupClickListener('changetype-address', ['address']);
   setupClickListener('changetype-establishment', ['establishment']);
   setupClickListener('changetype-geocode', ['geocode']);
+
+  // ........................................................................
+
+  // Add the marker at the clicked location on map, and add the label from the array of alphabetical characters.
+  function addMarker(location, map) {
+    var marker = new google.maps.Marker({
+      position: location,
+      label: labels[labelIndex++ % labels.length],
+      map: map
+    });
+  }
+  // ........................................................................
+  // show the markers on saved point by user from local storage
+  var retrieveData;
+  function showMarker() {
+    if (localStorage.getItem('userMarkers')) {
+      retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
+      for (var i = 0; i < retrieveData.length; i++) {
+        var marker = new google.maps.Marker({
+        position : new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng),
+        map:map
+      });
+    }
+  }else {
+    console.log('not exist');
+  }
 }
-
-// ........................................................................
-
-// Add the marker at the clicked location on map, and add the label from the array of alphabetical characters.
-function addMarker(location, map) {
-  var marker = new google.maps.Marker({
-    position: location,
-    label: labels[labelIndex++ % labels.length],
-    map: map
-  });
 }
-// ........................................................................
-// show the markers on saved point by user from local storage
-// function showMarker(map) {
-//   var latLngLocal;
-//   var retrieveData;
-//   retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
-//   for (var i = 0; i < retrieveData.length; i++) {
-//     latLngLocal = new google.maps.LatLng(retrieveData[i]['lat'], retrieveData[i]['lng']);
-//   addMarker(latLngLocal,map);
-// }}
-// // ........................................................................
-// window.addEventListener('load',function(map){
-//   if (localStorage.userMarkers) {
-//       showMarker(map);
-//   }
-// });
-
-//   google.maps.event.addListener(map,'click',function(event) {
-//     latitude_new = event.latLng.lat();
-//     longitude_new = event.latLng.lng();
-//     latLongStorageArray.push({lat:latitude_new ,lng:longitude_new});
-//     if(localStorage.getItem('userMarkers')) {
-//       localStorage.clear();
-//     }
-//     localStorage.setItem('userMarkers', JSON.stringify(latLongStorageArray));
-//   });
-//   google.maps.event.addDomListener(window, 'load', initMap);
-// }
-  // ..........................................................................
 
 
 // var geo = navigator.geolocation;
