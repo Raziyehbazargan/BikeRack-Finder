@@ -3,6 +3,7 @@ var uLong;
 var latLongStorageArray=[];
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
+var userPinImg = './img/icons/userPin.png'
 
 if (window.navigator.geolocation) {
     var failure, success;
@@ -117,19 +118,22 @@ function initMap() {
     var marker = new google.maps.Marker({
       position: location,
       label: labels[labelIndex++ % labels.length],
-      map: map
+      map: map,
+      icon:userPinImg
     });
   }
   // ........................................................................
   // show the markers on saved point by user from local storage
-  var retrieveData;
+
   function showMarker() {
+    var retrieveData;
     if (localStorage.getItem('userMarkers')) {
       retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
       for (var i = 0; i < retrieveData.length; i++) {
         var marker = new google.maps.Marker({
         position : new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng),
-        map:map
+        map:map,
+        icon:userPinImg
       });
     }
   }else {
