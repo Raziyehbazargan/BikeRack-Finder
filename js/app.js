@@ -1,5 +1,9 @@
 var uLat;
 var uLong;
+var latLongStorageArray=[];
+var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var labelIndex = 0;
+
 
 if (window.navigator.geolocation) {
     var failure, success;
@@ -24,10 +28,15 @@ function initMap() {
     zoom: 13
   });
 
+  // ..........................................................................
   // This event listener calls addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
-    addMarker(event.latLng, map);
-  });
+    latLongStorageArray.push({lat:event.latLng.lat() ,lng:event.latLng.lng()});
+    addMarker(event.latLng, map); //call addMarker function
+    localStorage.setItem('userMarkers', JSON.stringify(latLongStorageArray));
+    google.maps.event.addDomListener(window, 'load', initMap);
+    });
+    // ........................................................................
 
   var input = /** @type {!HTMLInputElement} */(
       document.getElementById('pac-input'));
@@ -100,26 +109,46 @@ function initMap() {
   setupClickListener('changetype-geocode', ['geocode']);
 }
 
-var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-var labelIndex = 0;
-var latitude_new;
-var longitude_new;
-// Adds a marker to the map.
+// ........................................................................
+
+// Add the marker at the clicked location on map, and add the label from the array of alphabetical characters.
 function addMarker(location, map) {
-  // Add the marker at the clicked location, and add the next-available label
-  // from the array of alphabetical characters.
   var marker = new google.maps.Marker({
     position: location,
     label: labels[labelIndex++ % labels.length],
     map: map
   });
-google.maps.event.addListener(map,'mousemove',function(event) {
-    latitude_new = event.latLng.lat()
-    longitude_new = event.latLng.lng()
-  });
-  google.maps.event.addDomListener(window, 'load', initMap);
 }
+// ........................................................................
+// show the markers on saved point by user from local storage
+// function showMarker(map) {
+//   var latLngLocal;
+//   var retrieveData;
+//   retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
+//   for (var i = 0; i < retrieveData.length; i++) {
+//     latLngLocal = new google.maps.LatLng(retrieveData[i]['lat'], retrieveData[i]['lng']);
+//   addMarker(latLngLocal,map);
+// }}
+// // ........................................................................
+// window.addEventListener('load',function(map){
+//   if (localStorage.userMarkers) {
+//       showMarker(map);
+//   }
+// });
+
+//   google.maps.event.addListener(map,'click',function(event) {
+//     latitude_new = event.latLng.lat();
+//     longitude_new = event.latLng.lng();
+//     latLongStorageArray.push({lat:latitude_new ,lng:longitude_new});
+//     if(localStorage.getItem('userMarkers')) {
+//       localStorage.clear();
+//     }
+//     localStorage.setItem('userMarkers', JSON.stringify(latLongStorageArray));
+//   });
+//   google.maps.event.addDomListener(window, 'load', initMap);
+// }
   // ..........................................................................
+
 
 // var geo = navigator.geolocation;
 // //console.log(geo.getCurrentPosition());
