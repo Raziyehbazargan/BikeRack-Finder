@@ -141,17 +141,14 @@ function initMap() {
       for (var i = 0; i < retrieveData.length; i++) {
         var latLngLocal = new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng);
         addMarker(latLngLocal,map)
-      //   var marker = new google.maps.Marker({
-      //   position : new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng),
-      //   map:map,
-      //   icon:userPinImg
-      // });
     }
   }else {
     console.log('not exist');
   }
 }
 }
+
+
 
 
 // var geo = navigator.geolocation;
