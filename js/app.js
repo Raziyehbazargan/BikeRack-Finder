@@ -37,11 +37,11 @@ function initMap() {
       latLongStorageArray = JSON.parse(localStorage.getItem('userMarkers'));
       latLongStorageArray.push({lat:event.latLng.lat() ,lng:event.latLng.lng()});
       localStorage.setItem('userMarkers', JSON.stringify(latLongStorageArray));
-      addMarker(event.latLng, map); //call addMarker function
+      addMarker(event.latLng); //call addMarker function
     }else {
       latLongStorageArray.push({lat:event.latLng.lat() ,lng:event.latLng.lng()});
       localStorage.setItem('userMarkers', JSON.stringify(latLongStorageArray));
-      addMarker(event.latLng, map); //call addMarker function
+      addMarker(event.latLng); //call addMarker function
     }
     });
     // google.maps.event.addDomListener(window, 'load', initMap);
@@ -71,7 +71,8 @@ function initMap() {
   var marker = new google.maps.Marker({
     position: map.center,
     map: map,
-    title: 'Hello World!'
+    title: 'Hello World!',
+    icon:'./img/icons/person.png'
 
 });
 //call function
@@ -132,7 +133,7 @@ function initMap() {
 
   // ........................................................................
   // Add the marker at the clicked location on map, and add the label from the array of alphabetical characters.
-  function addMarker(location, map) {
+  function addMarker(location) {
     var marker = new google.maps.Marker({
       position: location,
       label: labels[labelIndex++ % labels.length],
@@ -147,8 +148,8 @@ function initMap() {
       var retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
       for (var i = 0; i < retrieveData.length; i++) {
         var latLngLocal = new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng);
-
-        addMarker(latLngLocal,map)
+        //cal function to add markers on map
+        addMarker(latLngLocal)
     }
   }else {
     console.log('not exist');
