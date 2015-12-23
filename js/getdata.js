@@ -33,4 +33,17 @@ var rackObj = {
       }
     }
   },
+  rackMarker: function(map, rack){
+    var latLng = {lat: parseFloat(rack.latitude), lng: parseFloat(rack.longitude)}
+    var marker = new google.maps.Marker({
+      position: latLng,
+      map: map,
+      title: "Distance from you: " + rackObj.netDistance(uLat, uLong, latLng.lat, latLng.lng) + " feet."
+    })
+  },
+  racksMapper: function(map){
+    for (var i = 0; i < shortList.length ; i++){
+      this.rackMarker(map, shortList[i]);
+    }
+  }
 };
