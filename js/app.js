@@ -31,11 +31,10 @@ function initMap() {
 
   // ..........................................................................
   // This event listener calls addMarker() when the map is clicked.
+  //and check for that local storage is exist or not
   google.maps.event.addListener(map, 'click', function(event) {
     if (localStorage.userMarkers) {
-      var retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
-      console.log(retrieveData);
-      latLongStorageArray = retrieveData;
+      latLongStorageArray = JSON.parse(localStorage.getItem('userMarkers'));
       latLongStorageArray.push({lat:event.latLng.lat() ,lng:event.latLng.lng()});
       localStorage.setItem('userMarkers', JSON.stringify(latLongStorageArray));
       addMarker(event.latLng, map); //call addMarker function
@@ -132,7 +131,6 @@ function initMap() {
   setupClickListener('changetype-geocode', ['geocode']);
 
   // ........................................................................
-
   // Add the marker at the clicked location on map, and add the label from the array of alphabetical characters.
   function addMarker(location, map) {
     var marker = new google.maps.Marker({
@@ -144,18 +142,13 @@ function initMap() {
   }
   // ........................................................................
   // show the markers on saved point by user from local storage
-
   function showMarker() {
     if (localStorage.getItem('userMarkers')) {
       var retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
       for (var i = 0; i < retrieveData.length; i++) {
         var latLngLocal = new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng);
-        addMarker(latLngLocal,map);
-      //   var marker = new google.maps.Marker({
-      //   position : new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng),
-      //   map:map,
-      //   icon:userPinImg
-      // });
+
+        addMarker(latLngLocal,map)
     }
   }else {
     console.log('not exist');
