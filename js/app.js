@@ -31,9 +31,18 @@ function initMap() {
   // ..........................................................................
   // This event listener calls addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
-    latLongStorageArray.push({lat:event.latLng.lat() ,lng:event.latLng.lng()});
-    addMarker(event.latLng, map); //call addMarker function
-    localStorage.setItem('userMarkers', JSON.stringify(latLongStorageArray));
+    if (localStorage.userMarkers) {
+      var retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
+      console.log(retrieveData);
+      latLongStorageArray = retrieveData;
+      latLongStorageArray.push({lat:event.latLng.lat() ,lng:event.latLng.lng()});
+      localStorage.setItem('userMarkers', JSON.stringify(latLongStorageArray));
+      addMarker(event.latLng, map); //call addMarker function
+    }else {
+      latLongStorageArray.push({lat:event.latLng.lat() ,lng:event.latLng.lng()});
+      localStorage.setItem('userMarkers', JSON.stringify(latLongStorageArray));
+      addMarker(event.latLng, map); //call addMarker function
+    }
     });
     // google.maps.event.addDomListener(window, 'load', initMap);
     // ........................................................................
@@ -126,15 +135,17 @@ function initMap() {
   // show the markers on saved point by user from local storage
 
   function showMarker() {
-    var retrieveData;
     if (localStorage.getItem('userMarkers')) {
+      var retrieveData;
       retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
       for (var i = 0; i < retrieveData.length; i++) {
-        var marker = new google.maps.Marker({
-        position : new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng),
-        map:map,
-        icon:userPinImg
-      });
+        var latLngLocal = new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng);
+        addMarker(latLngLocal,map)
+      //   var marker = new google.maps.Marker({
+      //   position : new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng),
+      //   map:map,
+      //   icon:userPinImg
+      // });
     }
   }else {
     console.log('not exist');
