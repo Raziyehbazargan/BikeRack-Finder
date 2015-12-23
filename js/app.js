@@ -4,6 +4,7 @@ var latLongStorageArray=[];
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
 var userPinImg = './img/icons/userPin.png'
+var map;
 
 if (window.navigator.geolocation) {
     var failure, success;
@@ -23,7 +24,7 @@ if (window.navigator.geolocation) {
 }
 
 function initMap() {
-   var map = new google.maps.Map(document.getElementById('map'), {
+   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: uLat, lng: uLong},
     zoom: 13
   });

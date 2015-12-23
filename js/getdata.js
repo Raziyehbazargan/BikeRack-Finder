@@ -7,10 +7,7 @@ var rackObj = {
   sliderEl: document.getElementById("slider"),
   txtinEl: document.getElementById('txtin'),
   callData: $.getJSON('https://data.seattle.gov/resource/fxh3-tqdm.json?$limit=3000').done(function(){
-    console.log("got data");
     rackObj.rackData = rackObj.callData;
-    console.log("this is the responseJSON:");
-    console.log(rackObj.rackData.responseJSON);
   }),
   //returns net distance between user and rack in feet.
   netDistance: function(userLat, userLong, rackLat, rackLong){
@@ -33,17 +30,17 @@ var rackObj = {
       }
     }
   },
-  rackMarker: function(map, rack){
-    var latLng = {lat: parseFloat(rack.latitude), lng: parseFloat(rack.longitude)}
+  rackMarker: function(rack){
+    var latLng = {lat: parseFloat(rack.latitude), lng: parseFloat(rack.longitude)};
     var marker = new google.maps.Marker({
       position: latLng,
       map: map,
       title: "Distance from you: " + rackObj.netDistance(uLat, uLong, latLng.lat, latLng.lng) + " feet."
     })
   },
-  racksMapper: function(map){
+  racksMapper: function(){
     for (var i = 0; i < this.shortList.length ; i++){
-      this.rackMarker(map, this.shortList[i]);
+      this.rackMarker(this.shortList[i]);
     }
   }
 };
