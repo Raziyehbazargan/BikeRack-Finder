@@ -1,6 +1,9 @@
 var rackObj = {
   rackData: null,
   shortList: [],
+  distance: 500,
+  distanceEl: document.getElementById("distance"),
+  sliderEl: document.getElementById("slider"),
   callData: $.getJSON('https://data.seattle.gov/resource/fxh3-tqdm.json?$limit=3000').done(function(){
     console.log("got data");
     rackObj.rackData = rackObj.callData;
@@ -27,6 +30,13 @@ var rackObj = {
         this.shortList.push(rack[i]);
       }
     }
-  }
+  },
+  //creates new short list based upon slider value - still needs to include a mapping function.
+  getDistance: this.sliderEl.addEventListener('submit', function(e){
+    e.preventDefault;
+    this.distance = parseInt(this.sliderEl.value);
+    marker.setMap(null);
+    closeRacksFinder(uLat, uLong, this.distance);
+  })
 
 };
