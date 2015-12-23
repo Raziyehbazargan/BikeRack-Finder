@@ -1,3 +1,4 @@
+
 var rackObj = {
   rackData: null,
   shortList: [],
@@ -31,12 +32,12 @@ var rackObj = {
       }
     }
   },
-  //creates new short list based upon slider value - still needs to include a mapping function.
-  getDistance: this.sliderEl.addEventListener('submit', function(e){
-    e.preventDefault;
-    this.distance = parseInt(this.sliderEl.value);
-    marker.setMap(null);
-    closeRacksFinder(uLat, uLong, this.distance);
-  })
-
 };
+//creates new short list based upon slider value - still needs to include a mapping function.
+rackObj.distanceEl.addEventListener('submit', function(e){
+  e.preventDefault();
+  rackObj.distance = parseInt(rackObj.sliderEl.value);
+  // marker.setMap(null);
+  console.log(rackObj.distance);
+  // closeRacksFinder(uLat, uLong, this.distance);
+  })
