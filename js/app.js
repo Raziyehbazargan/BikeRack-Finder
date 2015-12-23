@@ -30,6 +30,7 @@ function initMap() {
 
   // ..........................................................................
   // This event listener calls addMarker() when the map is clicked.
+  //and check for that local storage is exist or not
   google.maps.event.addListener(map, 'click', function(event) {
     if (localStorage.userMarkers) {
       latLongStorageArray = JSON.parse(localStorage.getItem('userMarkers'));
