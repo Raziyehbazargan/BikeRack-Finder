@@ -146,11 +146,10 @@ function initMap() {
 
   function showMarker() {
     if (localStorage.getItem('userMarkers')) {
-      var retrieveData;
-      retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
+      var retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
       for (var i = 0; i < retrieveData.length; i++) {
         var latLngLocal = new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng);
-        addMarker(latLngLocal,map)
+        addMarker(latLngLocal,map);
       //   var marker = new google.maps.Marker({
       //   position : new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng),
       //   map:map,
