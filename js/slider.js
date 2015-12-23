@@ -1,12 +1,12 @@
 //creates new short list based upon slider value - still needs to include a mapping function.
 rackObj.txtinEl.value = "600 feet";
-rackObj.distanceEl.addEventListener('submit', function(e){
-  e.preventDefault();
-  rackObj.distance = parseInt(rackObj.sliderEl.value);
-  // marker.setMap(null);
-  console.log(rackObj.distance);
-  // closeRacksFinder(uLat, uLong, this.distance);
-  })
+// rackObj.distanceEl.addEventListener('submit', function(e){
+//   e.preventDefault();
+//   rackObj.distance = parseInt(rackObj.sliderEl.value);
+//   // marker.setMap(null);
+//   console.log(rackObj.distance);
+//   // closeRacksFinder(uLat, uLong, this.distance);
+//   })
 
 rackObj.sliderEl.addEventListener('change', function(e) {
   e.preventDefault();

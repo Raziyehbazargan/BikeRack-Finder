@@ -46,6 +46,16 @@ function initMap() {
     });
     // google.maps.event.addDomListener(window, 'load', initMap);
     // ........................................................................
+    //Adding the submit event listener to get access to the mapInit event
+  rackObj.distanceEl.addEventListener('submit', function(e, map){
+    e.preventDefault();
+    rackObj.distance = parseInt(rackObj.sliderEl.value);
+    // marker.setMap(null);
+    console.log(rackObj.distance);
+    rackObj.closeRacksFinder(uLat, uLong, rackObj.distance);
+    rackObj.racksMapper(map);
+
+  });
 
   var input = /** @type {!HTMLInputElement} */(
       document.getElementById('pac-input'));
