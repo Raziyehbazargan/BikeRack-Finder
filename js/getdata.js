@@ -42,8 +42,8 @@ var rackObj = {
     })
   },
   racksMapper: function(map){
-    for (var i = 0; i < shortList.length ; i++){
-      this.rackMarker(map, shortList[i]);
+    for (var i = 0; i < this.shortList.length ; i++){
+      this.rackMarker(map, this.shortList[i]);
     }
   }
 };
