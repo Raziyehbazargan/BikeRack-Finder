@@ -21,7 +21,25 @@
       </nav>
     </header>
     <main class="container">
+      <form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+       <div class="row">
+         <label for="name">Your name:</label>
+         <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+       </div>
+       <div class="row">
+         <label for="email">Your email:</label>
+         <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+       </div>
+       <div class="row">
+         <label for="message">Your message:</label>
+         <textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
+       </div>
+       <input type="submit" value="Send Email" action="mailto:hello@ractrac.com" /><br />
+       </form>
 
+
+       <!-- <input id="submit_button" type="submit" value="Send email" /><a href="mailto:hello@ractrac.com"></a> -->
+      </form>
     </main>
     <!-- ......................................Footer .................................... -->
      <footer class="container" id="footer">
@@ -32,6 +50,7 @@
                <li><a href="#history">Contact us</a></li>
                <li><a href="#products">About us</a></li>
              </ul>
+
            </article>
            <article class="four columns">
              <ul class="footerList">
