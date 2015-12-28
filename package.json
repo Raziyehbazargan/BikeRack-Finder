@@ -1,0 +1,29 @@
+{
+  "name": "ractrac",
+  "version": "1.0.0",
+  "description": "package file for ractrac, our codefellows 201 final project",
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log('test command successful')"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ptrompeter/Bike-Rack-Finder.git"
+  },
+  "keywords": [
+    "node",
+    "ractrac",
+    "package",
+    "JSON"
+  ],
+  "author": "Patrick Trompeter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ptrompeter/Bike-Rack-Finder/issues"
+  },
+  "homepage": "https://github.com/ptrompeter/Bike-Rack-Finder#readme",
+  "dependencies": {
+    "ejs": "^2.3.4",
+    "express": "^4.13.3"
+  }
+}
