@@ -73,7 +73,7 @@ function initMap() {
     position: map.center,
     map: map,
     title: 'you are here!',
-    icon:'./img/icons/person.png'
+    icon:'../img/icons/person.png'
 
 });
 //call function
