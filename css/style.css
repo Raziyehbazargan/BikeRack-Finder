@@ -7,9 +7,9 @@ html, body {
 #map {
       height: 100%;
     }
-    
+
 #floating-panel {
-position: absolute;
+position: inherit;
 top: 10px;
 left: 25%;
 z-index: 5;

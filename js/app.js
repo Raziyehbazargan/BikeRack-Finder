@@ -152,21 +152,30 @@ function initMap() {
     }
   }
 
-  // Removes the markers from the map, but keeps them in the array.
+  // Hides markers from the map, but keeps them in the array.
   function clearMarkers() {
     setMapOnAll(null);
   }
+
+  var elclearMarkers = document.getElementById('clearMarkers');
+  elclearMarkers.onclick = clearMarkers;
 
   // Shows any markers currently in the array.
   function showMarkers() {
     setMapOnAll(map);
   }
 
+  var elshowMarkers = document.getElementById('showMarkers');
+  elshowMarkers.onclick = showMarkers;
+
   // Deletes all markers in the array by removing references to them.
   function deleteMarkers() {
     clearMarkers();
     markers = [];
   }
+
+  var eldeleteMarkers = document.getElementById('deleteMarkers');
+  eldeleteMarkers.onclick = deleteMarkers;
 
   // ........................................................................
   // show the markers on saved point by user from local storage

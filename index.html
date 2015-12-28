@@ -51,13 +51,15 @@
       <input type="radio" name="type" id="changetype-geocode">
       <label for="changetype-geocode">Geocodes</label>
     </div>
-    <div id="map"></div>
 
     <div id="floating-panel">
-      <input onclick="clearMarkers();" type=button value="Hide Markers">
-      <input onclick="showMarkers();" type=button value="Show All Markers">
-      <input onclick="deleteMarkers();" type=button value="Delete Markers">
+      <input type=button value="Hide Markers" id="clearMarkers">
+      <input type=button value="Show All Markers" id="showMarkers">
+      <input type=button value="Delete Markers" id="deleteMarkers">
     </div>
+
+    <div id="map"></div>
+
     <section class="outp" id="output">
       Where the output from user interactions with the map is displayed.
     </section>
