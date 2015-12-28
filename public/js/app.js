@@ -74,7 +74,7 @@ function initMap() {
     map: map,
     //Person's icon
     title: 'you are here!',
-    icon:'../img/icons/person.png'
+    icon:'../img/Icons/Person.png'
 
 });
 //call function
