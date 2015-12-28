@@ -5,6 +5,7 @@ var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
 var userPinImg = './img/icons/userPin.png'
 var map;
+var markers = [];
 
 if (window.navigator.geolocation) {
     var failure, success;
@@ -140,7 +141,41 @@ function initMap() {
       map: map,
       icon:userPinImg
     });
+    markers.push(marker);
   }
+
+  // Sets the map on all markers in the array.
+  function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  }
+
+  // Hides markers from the map, but keeps them in the array.
+  function clearMarkers() {
+    setMapOnAll(null);
+  }
+
+  var elclearMarkers = document.getElementById('clearMarkers');
+  elclearMarkers.onclick = clearMarkers;
+
+  // Shows any markers currently in the array.
+  function showMarkers() {
+    setMapOnAll(map);
+  }
+
+  var elshowMarkers = document.getElementById('showMarkers');
+  elshowMarkers.onclick = showMarkers;
+
+  // Deletes all markers in the array by removing references to them.
+  function deleteMarkers() {
+    clearMarkers();
+    markers = [];
+  }
+
+  var eldeleteMarkers = document.getElementById('deleteMarkers');
+  eldeleteMarkers.onclick = deleteMarkers;
+
   // ........................................................................
   // show the markers on saved point by user from local storage
   function showMarker() {
@@ -156,41 +191,3 @@ function initMap() {
   }
 }
 }
-
-
-// var geo = navigator.geolocation;
-// //console.log(geo.getCurrentPosition());
-// function initMap() {
-//   var map = new google.maps.Map(document.getElementById('map'), {
-//     center: {lat: -34.397, lng: 150.644},
-//     zoom: 6
-//   });
-//   var infoWindow = new google.maps.InfoWindow({map: map});
-//
-//   // Try HTML5 geolocation.
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(function(position) {
-//       var pos = {
-//         lat: position.coords.latitude,
-//         lng: position.coords.longitude
-//       };
-//       console.log(lat);
-//       console.log(lng);
-//       infoWindow.setPosition(pos);
-//       infoWindow.setContent('Location found.');
-//       map.setCenter(pos);
-//     }, function() {
-//       handleLocationError(true, infoWindow, map.getCenter());
-//     });
-//   } else {
-//     // Browser doesn't support Geolocation
-//     handleLocationError(false, infoWindow, map.getCenter());
-//   }
-// }
-//
-// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-//   infoWindow.setPosition(pos);
-//   infoWindow.setContent(browserHasGeolocation ?
-//                         'Error: The Geolocation service failed.' :
-//                         'Error: Your browser doesn\'t support geolocation.');
-// }
