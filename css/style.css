@@ -44,6 +44,23 @@ nav li:hover, nav li a:hover {
   margin-right: 18%;
 }
 
+.abimg {
+  width:10%;
+  margin-left: 20%;
+  display: inline-block;
+  float: left;
+  margin-right: 5%;
+  border: 3px solid #FF3333;
+  border-radius: 200px;
+}
+
+.abtxt {
+  width: 55%;
+  margin-right: 10%;
+  padding-top: 8px;
+  padding-bottom: 10px;
+}
+
 h5 {
   font-size: 1.1em;
   font-weight: bold;
