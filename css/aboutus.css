@@ -38,10 +38,10 @@ nav ul li a:hover {
 
 .mainSection{
   background-color: white;
-
 }
-.teamSeaction{
-  /*background-color: #505050;*/
+.teamSeaction img{
+  width: 200px;
+  height: 280px;
 }
 .teamSeaction img{
   border:1px solid black;
