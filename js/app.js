@@ -72,7 +72,7 @@ function initMap() {
   var marker = new google.maps.Marker({
     position: map.center,
     map: map,
-    title: 'Hello World!',
+    title: 'you are here!',
     icon:'./img/icons/person.png'
 
 });
