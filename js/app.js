@@ -158,9 +158,6 @@ function showMarker() {
   }
 }
 
-function removeMarkers(){
-
-}
 
 
 
