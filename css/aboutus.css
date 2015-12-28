@@ -1,5 +1,3 @@
-
-
 nav{
   justify-content:space-between;
   margin-bottom: 30px;
@@ -22,11 +20,9 @@ nav ul li a {
   color: white;
   align-items: flex-start;
 	}
-
 nav ul li a:hover {
 	color: #60B7F2;
 	}
-
   nav > ul > li ul {
   visibility: hidden;
   position: absolute;
@@ -34,54 +30,62 @@ nav ul li a:hover {
   left: 0;
   transition: 0.2s 1s;
 }
-
-
 .mainSection{
   background-color: white;
+  padding: 8%;
 }
-.teamSeaction img{
-  width: 200px;
-  height: 280px;
+.teamSection{
+  background-color: #505050;
 }
-.teamSeaction img{
-  border:1px solid black;
-  margin-top: 20px;
+.teamSection img{
+  width: 90%;
   margin-bottom: 20px;
+}
+.teamSection img:hover{
+  width: 93%;
+}
+.teamSection figure{
+  border: 1px solid black;
+  text-align: center;
+  background: white;
+  font-size: 80%;
 }
 h3{
   text-align: center;
   color:	#F7751F;
   font-family: 'Candal', sans-serif;
 }
-p{
-}
+
 /*------------Footer--------------------------------------------*/
 footer{
   background-color: #505050;
   margin: 0px auto;
   padding: 10px;
   font-size: 10px;
-  /*justify-content: center;*/
+  color: white;
 }
 footer ul {
 	margin: 10px;
-	/*padding: 2px;*/
 	list-style-type: none;
 	text-align: left;
 	}
 footer ul li a {
 	text-decoration: none;
 	padding: .2em 1em;
-  color: black;
-  /*align-items: flex-start;*/
+  color: white;
 	}
-
 footer ul li a:hover {
 	color: lightgray;
 	}
-footer p {text-align: center;}
-#footer_img{margin-top: 20px}
-
+footer p {
+  text-align: center;
+}
+#footer_img{
+  margin-top: 20px
+}
 .copyright{
   margin-top: 30px;
+}
+section.colorsection{
+  background-color :	#F7751F;
 }
