@@ -11,47 +11,52 @@
     <script src="js/scrload.js"></script>
   </head>
   <body>
-      <section class= "logo">
-        <img src="ractrac.png">
-          <p>Track bike racks wherever you are!
-          </p>
+    <section class="menu">
+      <section class="logoi">
+        <a href="index.html"><img src="ractrac.png"></a>
       </section>
-      <section class="navmenu">
         <nav>
           <ul>
-            <li class="lef"><a href="index.html">Home</a></li>
-            <li class="lef"><a href="about.html">About RacTrac</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About RacTrac</a></li>
             <li><a href="contact.html">Contact Us</a></li>
           </ul>
         </nav>
+    </section>
+    <section class="buffer">
+    </section>
+      <section class="imbg">
+        <h2>Going somewhere, but don't know where to put your bike?</h2>
+        <h4>Introducing RacTrac, a revolutionary new site that allows you to see all nearby bike racks.
+          RacTrac uses data from the city to display nearby bike racks based on your location.
+        Try it today!</h4>
       </section>
-      <section class="intr">
-        A brief set of instructions for the user.
-      </section>
-      <section>
+      <div id="map" class="mapsect"></div>
+      <section class="controller redd">
         <form id="distance">
-          <label for "slider">How far are you willing to walk?</label>
-          <input type="text" name="txtin" id="txtin" cols="4">
+          <label for "slider" class="sldlbl">How far are you willing to walk?</label>
+          <input type="text" class="txtin" name="txtin" id="txtin" cols="4">
           <input type="range" name="slider" id="slider" min="100" max="1000" step="100" incremental='true'>
-          <button type="submit" id="distBut">Enter distance</button>
+          <br>
+          <button type="submit" id="distBut" class="distbut">Enter distance</button>
         </form>
-      </section>
-    <input id="pac-input" class="controls" type="text"
-        placeholder="Enter a location">
-    <div id="type-selector" class="controls">
-      <input type="radio" name="type" id="changetype-all" checked="checked">
-      <label for="changetype-all">All</label>
+        <input id="pac-input" class="controls" type="text"
+          placeholder="Enter a location">
+          <br>
+        <div id="type-selector" class="controls">
+        <input type="radio" name="type" id="changetype-all" checked="checked">
+        <label for="changetype-all">All</label>
 
-      <input type="radio" name="type" id="changetype-establishment">
-      <label for="changetype-establishment">Establishments</label>
+        <input type="radio" name="type" id="changetype-establishment">
+        <label for="changetype-establishment">Establishments</label>
 
-      <input type="radio" name="type" id="changetype-address">
-      <label for="changetype-address">Addresses</label>
+        <input type="radio" name="type" id="changetype-address">
+        <label for="changetype-address">Addresses</label>
 
-      <input type="radio" name="type" id="changetype-geocode">
-      <label for="changetype-geocode">Geocodes</label>
-    </div>
-    <div id="map"></div>
+        <input type="radio" name="type" id="changetype-geocode">
+        <label for="changetype-geocode">Geocodes</label>
+      </div>
+    </section>
 
 
     <section class="outp" id="output">
