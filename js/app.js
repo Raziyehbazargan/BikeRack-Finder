@@ -130,32 +130,62 @@ function initMap() {
   setupClickListener('changetype-address', ['address']);
   setupClickListener('changetype-establishment', ['establishment']);
   setupClickListener('changetype-geocode', ['geocode']);
+}
 
-  // ........................................................................
-  // Add the marker at the clicked location on map, and add the label from the array of alphabetical characters.
-  function addMarker(location) {
-    var marker = new google.maps.Marker({
-      position: location,
-      label: labels[labelIndex++ % labels.length],
-      map: map,
-      icon:userPinImg
-    });
-  }
-  // ........................................................................
-  // show the markers on saved point by user from local storage
-  function showMarker() {
-    if (localStorage.getItem('userMarkers')) {
-      var retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
+
+// ........................................................................
+// Add the marker at the clicked location on map, and add the label from the array of alphabetical characters.
+function addMarker(location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    label: labels[labelIndex++ % labels.length],
+    map: map,
+    icon:userPinImg
+  });
+}
+// ........................................................................
+// show the markers on saved point by user from local storage
+function showMarker() {
+  if (localStorage.getItem('userMarkers')) {
+    var retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
       for (var i = 0; i < retrieveData.length; i++) {
-        var latLngLocal = new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng);
-        //cal function to add markers on map
-        addMarker(latLngLocal)
+      var latLngLocal = new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng);
+      //cal function to add markers on map
+      addMarker(latLngLocal)
     }
   }else {
     console.log('not exist');
   }
 }
+
+function removeMarkers(){
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // var geo = navigator.geolocation;
