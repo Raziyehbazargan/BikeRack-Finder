@@ -48,7 +48,7 @@ function initMap() {
     // google.maps.event.addDomListener(window, 'load', initMap);
     // ........................................................................
     //Adding the submit event listener to get access to the mapInit event
-  rackObj.distanceEl.addEventListener('submit', function(e, map){
+    rackObj.distanceEl.addEventListener('submit', function(e, map){
     e.preventDefault();
     rackObj.distance = parseInt(rackObj.sliderEl.value);
     // marker.setMap(null);
@@ -77,30 +77,15 @@ function initMap() {
     icon:'../img/Icons/Person.png'
 
 });
-//call function TO SHOW MARKERS FROM LOCAL STORAGE ON MAP
-  showMarker();
 
-  //Set unique id
-  //   marker.id = uniqueId;
-  //   uniqueId++;
-  //
-  // //Attach click event handler to the marker.
-  // google.maps.event.addListener(marker, "click", function () {
-  // DeleteMarker(marker.id);
-  //               });
-  //
-  // //Find and remove the marker from the Array
-  // function DeleteMarker(id) {
-  //           for (var i = 0; i < markers.length; i++) {
-  //               if (markers[i].id == id) {
-  //                   //Remove the marker from Map
-  //                   markers[i].setMap(null);
-  //                   //Remove the marker from array.
-  //                   markers.splice(i, 1);
-  //                   return;
-  //               }
-  //           }
-  //       };
+
+// ........................................................................
+  //call function TO SHOW MARKERS FROM LOCAL STORAGE ON MAP
+  document.getElementById('showMarkers').addEventListener('click',function(){
+    showMarker();
+  })
+  // ........................................................................
+
 
   autocomplete.addListener('place_changed', function() {
     infowindow.close();
@@ -128,7 +113,7 @@ function initMap() {
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);
 
-
+  // ...........................................................................
     //get new lat and long after change the address by auto complete
     console.log(map.getCenter());
     var newLoc = map.getCenter();
@@ -190,18 +175,41 @@ function initMap() {
     }
   }
 
+// ........................................................................
+// // Deletes all markers in the LOCAL STORAGE by click on delete markers button.
+document.getElementById('deleteMarkers').addEventListener('click',function(){
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+});
+// ........................................................................
 
-  // ........................................................................
-  // Deletes all markers in the array by removing references to them.
-   function eraseMarkers() {
-     clearMarkers();
-     markers = [];
-   }
-   var elDeleteMarkers = document.getElementById('noMarkers');
-   eldeleteMarkers.addEventListener('click',function(){
-     eraseMarkers();
-     localStorage.removeItem('userMarkers');
-   });
+
+
+
+
+  //Set unique id
+  //   marker.id = uniqueId;
+  //   uniqueId++;
+  //
+  // //Attach click event handler to the marker.
+  // google.maps.event.addListener(marker, "click", function () {
+  // DeleteMarker(marker.id);
+  //               });
+  //
+  // //Find and remove the marker from the Array
+  // function DeleteMarker(id) {
+  //           for (var i = 0; i < markers.length; i++) {
+  //               if (markers[i].id == id) {
+  //                   //Remove the marker from Map
+  //                   markers[i].setMap(null);
+  //                   //Remove the marker from array.
+  //                   markers.splice(i, 1);
+  //                   return;
+  //               }
+  //           }
+  //       };
+
 
    //   markers.push(marker);
    // }
