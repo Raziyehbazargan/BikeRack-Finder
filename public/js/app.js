@@ -173,14 +173,39 @@ function initMap() {
   //     });
   // ........................................................................
 
+
   // Deletes all markers in the array by removing references to them.
-  function deleteMarkers() {
+  function eraseMarkers() {
     clearMarkers();
+    console.log('erasemarkers clicked');
     markers = [];
+    // localStorage.removeItem(markers);
+    // localStorage.setItem('userMarkers',JSON.stringify(markers));
   }
 
-  var eldeleteMarkers = document.getElementById('deleteMarkers');
-  eldeleteMarkers.onclick = deleteMarkers;
+  var eldeleteMarkers = document.getElementById('noMarkers');
+  console.log(eldeleteMarkers);
+  // eldeleteMarkers.onclick = deleteMarkers;
+  eldeleteMarkers.addEventListener('click',function(){
+    eraseMarkers();
+    console.log('delete button clicked');
+    localStorage.removeItem('userMarkers');
+  });
+
+  // ........................................................................
+  // show the markers on saved point by user from local storage
+  function showMarker() {
+    if (localStorage.getItem('userMarkers')) {
+      var retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
+      for (var i = 0; i < retrieveData.length; i++) {
+        var latLngLocal = new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng);
+        //cal function to add markers on map
+        addMarker(latLngLocal)
+    }
+  }else {
+    console.log('not exist');
+  }
+}
 }
   // // Sets the map on all markers in the array.
   // function setMapOnAll(map) {
