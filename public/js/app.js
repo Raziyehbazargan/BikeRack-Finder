@@ -5,7 +5,7 @@ var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
 var userPinImg = '../img/Icons/userPin.png'
 var map;
-var markers = [];
+// var markers = [];
 
 if (window.navigator.geolocation) {
     var failure, success;
@@ -77,8 +77,9 @@ function initMap() {
     icon:'../img/Icons/Person.png'
 
 });
-//call function
+//call function TO SHOW MARKERS FROM LOCAL STORAGE ON MAP
   showMarker();
+
 
   autocomplete.addListener('place_changed', function() {
     infowindow.close();
@@ -142,9 +143,8 @@ function initMap() {
       map: map,
       icon:userPinImg,
     });
-    markers.push(marker);
+    // markers.push(marker);
   }
-
   // ........................................................................
   // show the markers on saved point by user from local storage
   function showMarker() {
@@ -160,38 +160,6 @@ function initMap() {
     }
   }
   // ........................................................................
-
-  // google.maps.event.addListener(marker, 'doubleClick', function(event) {
-  //   if (localStorage.getItem('userMarkers')) {
-  //     var retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
-  //       for ( var i = 0; i < retrieveData.length; i++ ) {
-  //         if (retrieveData[i].lat === event.latLng.lat() && retrieveData[i].lng===event.latLng.lng())
-  //           retrieveData.splice(i,1);
-  //         }
-  //       }
-  //       localStorage.userMarkers = JSON.stringify(retrieveData);
-  //     });
-  // ........................................................................
-
-
-  // Deletes all markers in the array by removing references to them.
-  function eraseMarkers() {
-    clearMarkers();
-    console.log('erasemarkers clicked');
-    markers = [];
-    // localStorage.removeItem(markers);
-    // localStorage.setItem('userMarkers',JSON.stringify(markers));
-  }
-
-  var eldeleteMarkers = document.getElementById('noMarkers');
-  console.log(eldeleteMarkers);
-  // eldeleteMarkers.onclick = deleteMarkers;
-  eldeleteMarkers.addEventListener('click',function(){
-    eraseMarkers();
-    console.log('delete button clicked');
-    localStorage.removeItem('userMarkers');
-  });
-
   // ........................................................................
   // show the markers on saved point by user from local storage
   function showMarker() {
@@ -207,6 +175,45 @@ function initMap() {
   }
 }
 }
+
+
+
+
+
+
+
+  // google.maps.event.addListener(marker, 'doubleClick', function(event) {
+  //   if (localStorage.getItem('userMarkers')) {
+  //     var retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
+  //       for ( var i = 0; i < retrieveData.length; i++ ) {
+  //         if (retrieveData[i].lat === event.latLng.lat() && retrieveData[i].lng===event.latLng.lng())
+  //           retrieveData.splice(i,1);
+  //         }
+  //       }
+  //       localStorage.userMarkers = JSON.stringify(retrieveData);
+  //     });
+  // ........................................................................
+
+
+  // Deletes all markers in the array by removing references to them.
+  // function eraseMarkers() {
+  //   // clearMarkers();
+  //   console.log('erasemarkers clicked');
+  //   markers = [];
+  //   // localStorage.removeItem(markers);
+  //   // localStorage.setItem('userMarkers',JSON.stringify(markers));
+  // }
+
+  // var eldeleteMarkers = document.getElementById('noMarkers');
+  // // console.log(eldeleteMarkers);
+  // // eldeleteMarkers.onclick = deleteMarkers;
+  // eldeleteMarkers.addEventListener('click',function(){
+  //   eraseMarkers();
+  //   console.log('delete button clicked');
+  //   localStorage.removeItem('userMarkers');
+  // });
+
+
   // // Sets the map on all markers in the array.
   // function setMapOnAll(map) {
   //   for (var i = 0; i < markers.length; i++) {

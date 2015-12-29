@@ -1,4 +1,8 @@
 
+// add an array to store markers that added on map from shortList aaray
+var mapMakers = [];
+
+
 var rackObj = {
   rackData: null,
   shortList: [],
@@ -37,10 +41,18 @@ var rackObj = {
       map: map,
       title: "Distance from you: " + rackObj.netDistance(uLat, uLong, latLng.lat, latLng.lng) + " feet."
     })
+    mapMakers.push(marker);
   },
   racksMapper: function(){
     for (var i = 0; i < this.shortList.length ; i++){
       this.rackMarker(this.shortList[i]);
     }
   }
-};
+}
+
+//remove all markers of nearest bike rack from map
+document.getElementById('clearMap').addEventListener('click',function(){
+  for (var i=0; i < mapMakers.length; i++) {
+    mapMakers[i].setMap(null);
+  }
+});
