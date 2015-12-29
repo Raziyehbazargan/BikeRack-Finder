@@ -107,6 +107,12 @@ function initMap() {
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);
 
+    //get new lat and long after change the address by auto complete
+    console.log(map.getCenter());
+    var newLoc = map.getCenter();
+    uLat = newLoc.lat();
+    uLong = newLoc.lng();
+// ...........................................................................
     var address = '';
     if (place.address_components) {
       address = [
@@ -139,7 +145,7 @@ function initMap() {
   function addMarker(location) {
     var marker = new google.maps.Marker({
       position: location,
-      label: labels[labelIndex++ % labels.length],
+      label:labels[labelIndex++ % labels.length],
       map: map,
       icon:userPinImg,
     });
@@ -159,22 +165,9 @@ function initMap() {
       console.log('not exist');
     }
   }
-  // ........................................................................
-  // ........................................................................
-  // show the markers on saved point by user from local storage
-  function showMarker() {
-    if (localStorage.getItem('userMarkers')) {
-      var retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
-      for (var i = 0; i < retrieveData.length; i++) {
-        var latLngLocal = new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng);
-        //cal function to add markers on map
-        addMarker(latLngLocal)
-    }
-  }else {
-    console.log('not exist');
-  }
 }
-}
+  // ........................................................................
+
 
 
 
