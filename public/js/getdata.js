@@ -57,4 +57,6 @@ document.getElementById('clearMap').addEventListener('click',function(){
   for (var i=0; i < mapMakers.length; i++) {
     mapMakers[i].setMap(null);
   }
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);  }
 });
