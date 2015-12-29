@@ -75,6 +75,7 @@ function initMap() {
     //Person's icon
     title: 'you are here!',
 <<<<<<< HEAD
+<<<<<<< HEAD
     icon:'./img/icons/person.png'
   });
   //call function
@@ -110,6 +111,35 @@ function initMap() {
   showMarker();
 
 >>>>>>> 04d07c5ce6e592726fe29e627046d7c93a5dda9b
+=======
+    icon:'../img/Icons/Person.png'
+
+});
+//call function TO SHOW MARKERS FROM LOCAL STORAGE ON MAP
+  showMarker();
+
+  //Set unique id
+  //   marker.id = uniqueId;
+  //   uniqueId++;
+  //
+  // //Attach click event handler to the marker.
+  // google.maps.event.addListener(marker, "click", function () {
+  // DeleteMarker(marker.id);
+  //               });
+  //
+  // //Find and remove the marker from the Array
+  // function DeleteMarker(id) {
+  //           for (var i = 0; i < markers.length; i++) {
+  //               if (markers[i].id == id) {
+  //                   //Remove the marker from Map
+  //                   markers[i].setMap(null);
+  //                   //Remove the marker from array.
+  //                   markers.splice(i, 1);
+  //                   return;
+  //               }
+  //           }
+  //       };
+>>>>>>> 60f0cbdc7459ab568402d8d4aa2508b03a6ac83b
 
   autocomplete.addListener('place_changed', function() {
     infowindow.close();
@@ -179,6 +209,7 @@ function initMap() {
       map: map,
       icon:userPinImg,
     });
+<<<<<<< HEAD
 <<<<<<< HEAD
     markers.push(marker);
   }
@@ -254,37 +285,65 @@ function initMap() {
   //   markers = [];
   //   // localStorage.removeItem(markers);
   //   // localStorage.setItem('userMarkers',JSON.stringify(markers));
+=======
+
+  //   markers.push(marker);
+>>>>>>> 60f0cbdc7459ab568402d8d4aa2508b03a6ac83b
   // }
-
-  // var eldeleteMarkers = document.getElementById('noMarkers');
-  // // console.log(eldeleteMarkers);
-  // // eldeleteMarkers.onclick = deleteMarkers;
-  // eldeleteMarkers.addEventListener('click',function(){
-  //   eraseMarkers();
-  //   console.log('delete button clicked');
-  //   localStorage.removeItem('userMarkers');
-  // });
-
-
+  //
   // // Sets the map on all markers in the array.
   // function setMapOnAll(map) {
   //   for (var i = 0; i < markers.length; i++) {
   //     markers[i].setMap(map);
   //   }
   // }
-
-  // Hides markers from the map, but keeps them in the array.
+  //
+  // // Hides markers from the map, but keeps them in the array.
   // function clearMarkers() {
   //   setMapOnAll(null);
+  //   // markers[markers.length -1].setMap(null)
   // }
   //
   // var elclearMarkers = document.getElementById('clearMarkers');
-  // elclearMarkers.onclick = clearMarkers;
-
+  // elclearMarkers.addEventListener('click',function(){
+  //   clearMarkers();
+  // }
+  //
   // // Shows any markers currently in the array.
   // function showMarkers() {
   //   setMapOnAll(map);
   // }
-
+  //
   // var elshowMarkers = document.getElementById('showMarkers');
-  // elshowMarkers.onclick = showMarkers;
+  // elshowMarkers.addEventListener('click',function(){
+  //   showMarkers();
+  // }
+  //
+  // // Deletes all markers in the array by removing references to them.
+  // function eraseMarkers() {
+  //   clearMarkers();
+  //   markers = [];
+  // }
+  //
+  // var eldeleteMarkers = document.getElementById('noMarkers');
+  //
+  // eldeleteMarkers.addEventListener('click',function(){
+  //   eraseMarkers();
+  //   localStorage.removeItem('userMarkers');
+  // });
+
+  // ........................................................................
+  // show the markers on saved point by user from local storage
+  function showMarker() {
+    if (localStorage.getItem('userMarkers')) {
+      var retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
+      for (var i = 0; i < retrieveData.length; i++) {
+        var latLngLocal = new google.maps.LatLng(retrieveData[i].lat, retrieveData[i].lng);
+        //cal function to add markers on map
+        addMarker(latLngLocal)
+    }
+    }else {
+      console.log('not exist');
+    }
+  }
+}
