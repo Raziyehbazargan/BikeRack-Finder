@@ -1,6 +1,7 @@
 
 // add an array to store markers that added on map from shortList aaray
 var mapMakers = [];
+var bikeRackIcon = '../img/Icons/Bike.png'
 
 
 var rackObj = {
@@ -39,7 +40,8 @@ var rackObj = {
     var marker = new google.maps.Marker({
       position: latLng,
       map: map,
-      title: "Distance from you: " + rackObj.netDistance(uLat, uLong, latLng.lat, latLng.lng) + " feet."
+      title: "Distance from you: " + rackObj.netDistance(uLat, uLong, latLng.lat, latLng.lng) + " feet.",
+      icon:bikeRackIcon
     })
     mapMakers.push(marker);
   },
