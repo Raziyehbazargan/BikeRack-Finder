@@ -83,9 +83,17 @@ function initMap() {
   //call function TO SHOW MARKERS FROM LOCAL STORAGE ON MAP
   document.getElementById('showMarkers').addEventListener('click',function(){
     showMarker();
-  })
-  // ........................................................................
+  });
 
+  // ........................................................................
+  // // Deletes all markers in the LOCAL STORAGE by click on delete markers button.
+  document.getElementById('deleteMarkers').addEventListener('click',function(){
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+    localStorage.removeItem('userMarkers');
+  });
+  // ........................................................................
 
   autocomplete.addListener('place_changed', function() {
     infowindow.close();
@@ -174,18 +182,6 @@ function initMap() {
       console.log('not exist');
     }
   }
-
-// ........................................................................
-// // Deletes all markers in the LOCAL STORAGE by click on delete markers button.
-document.getElementById('deleteMarkers').addEventListener('click',function(){
-  for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(null);
-  }
-});
-// ........................................................................
-
-
-
 
 
   //Set unique id
