@@ -80,6 +80,27 @@ function initMap() {
 //call function TO SHOW MARKERS FROM LOCAL STORAGE ON MAP
   showMarker();
 
+  //Set unique id
+  //   marker.id = uniqueId;
+  //   uniqueId++;
+  //
+  // //Attach click event handler to the marker.
+  // google.maps.event.addListener(marker, "click", function () {
+  // DeleteMarker(marker.id);
+  //               });
+  //
+  // //Find and remove the marker from the Array
+  // function DeleteMarker(id) {
+  //           for (var i = 0; i < markers.length; i++) {
+  //               if (markers[i].id == id) {
+  //                   //Remove the marker from Map
+  //                   markers[i].setMap(null);
+  //                   //Remove the marker from array.
+  //                   markers.splice(i, 1);
+  //                   return;
+  //               }
+  //           }
+  //       };
 
   autocomplete.addListener('place_changed', function() {
     infowindow.close();
@@ -149,8 +170,51 @@ function initMap() {
       map: map,
       icon:userPinImg,
     });
-    // markers.push(marker);
-  }
+
+  //   markers.push(marker);
+  // }
+  //
+  // // Sets the map on all markers in the array.
+  // function setMapOnAll(map) {
+  //   for (var i = 0; i < markers.length; i++) {
+  //     markers[i].setMap(map);
+  //   }
+  // }
+  //
+  // // Hides markers from the map, but keeps them in the array.
+  // function clearMarkers() {
+  //   setMapOnAll(null);
+  //   // markers[markers.length -1].setMap(null)
+  // }
+  //
+  // var elclearMarkers = document.getElementById('clearMarkers');
+  // elclearMarkers.addEventListener('click',function(){
+  //   clearMarkers();
+  // }
+  //
+  // // Shows any markers currently in the array.
+  // function showMarkers() {
+  //   setMapOnAll(map);
+  // }
+  //
+  // var elshowMarkers = document.getElementById('showMarkers');
+  // elshowMarkers.addEventListener('click',function(){
+  //   showMarkers();
+  // }
+  //
+  // // Deletes all markers in the array by removing references to them.
+  // function eraseMarkers() {
+  //   clearMarkers();
+  //   markers = [];
+  // }
+  //
+  // var eldeleteMarkers = document.getElementById('noMarkers');
+  //
+  // eldeleteMarkers.addEventListener('click',function(){
+  //   eraseMarkers();
+  //   localStorage.removeItem('userMarkers');
+  // });
+
   // ........................................................................
   // show the markers on saved point by user from local storage
   function showMarker() {
@@ -166,48 +230,3 @@ function initMap() {
     }
   }
 }
-  // ........................................................................
-
-
-
-  // Deletes all markers in the array by removing references to them.
-  // function eraseMarkers() {
-  //   // clearMarkers();
-  //   console.log('erasemarkers clicked');
-  //   markers = [];
-  //   // localStorage.removeItem(markers);
-  //   // localStorage.setItem('userMarkers',JSON.stringify(markers));
-  // }
-
-  // var eldeleteMarkers = document.getElementById('noMarkers');
-  // // console.log(eldeleteMarkers);
-  // // eldeleteMarkers.onclick = deleteMarkers;
-  // eldeleteMarkers.addEventListener('click',function(){
-  //   eraseMarkers();
-  //   console.log('delete button clicked');
-  //   localStorage.removeItem('userMarkers');
-  // });
-
-
-  // // Sets the map on all markers in the array.
-  // function setMapOnAll(map) {
-  //   for (var i = 0; i < markers.length; i++) {
-  //     markers[i].setMap(map);
-  //   }
-  // }
-
-  // Hides markers from the map, but keeps them in the array.
-  // function clearMarkers() {
-  //   setMapOnAll(null);
-  // }
-  //
-  // var elclearMarkers = document.getElementById('clearMarkers');
-  // elclearMarkers.onclick = clearMarkers;
-
-  // // Shows any markers currently in the array.
-  // function showMarkers() {
-  //   setMapOnAll(map);
-  // }
-
-  // var elshowMarkers = document.getElementById('showMarkers');
-  // elshowMarkers.onclick = showMarkers;
