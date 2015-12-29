@@ -170,24 +170,6 @@ function initMap() {
 
 
 
-
-
-
-
-
-  // google.maps.event.addListener(marker, 'doubleClick', function(event) {
-  //   if (localStorage.getItem('userMarkers')) {
-  //     var retrieveData = JSON.parse(localStorage.getItem('userMarkers'));
-  //       for ( var i = 0; i < retrieveData.length; i++ ) {
-  //         if (retrieveData[i].lat === event.latLng.lat() && retrieveData[i].lng===event.latLng.lng())
-  //           retrieveData.splice(i,1);
-  //         }
-  //       }
-  //       localStorage.userMarkers = JSON.stringify(retrieveData);
-  //     });
-  // ........................................................................
-
-
   // Deletes all markers in the array by removing references to them.
   // function eraseMarkers() {
   //   // clearMarkers();
