@@ -7,7 +7,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <script src="js/app.js"></script>
-    <script src="js/keys.js"></script>
     <script src="js/scrload.js"></script>
   </head>
   <body>
@@ -61,13 +60,15 @@
 
 
     <div id="floating-panel">
-      <input type=button value="Hide Markers" id="clearMarkers">
+      <!-- a button for remove all markers from shortList array that shod nearest BikeRacks -->
+      <input type=button value="Clear Map " id="clearMap">
+
       <input type=button value="Show All Markers" id="showMarkers">
       <input type=button value="Delete Markers" id="noMarkers">
     </div>
 
     <div id="map"></div>
-
+    
     <section class="outp" id="output">
       Where the output from user interactions with the map is displayed.
     </section>
