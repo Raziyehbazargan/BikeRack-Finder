@@ -56,6 +56,16 @@ function initMap() {
     rackObj.closeRacksFinder(uLat, uLong, rackObj.distance);
     rackObj.racksMapper(map);
 
+  var geocoder = new.google.maps.Geocoder();
+
+  document.getElementById("pac-input").addEventListener('submit', function(e, geocoder, map){
+    e.preventDefault();
+    newRacks.geoCode(geocoder, map);
+    rackObj.distance = parseInt(rackObj.sliderEl.value);
+    rackObj.closeRacksFinder(uLat, uLong, rackObj.distance);
+    rackObj.racksMapper(map);
+  })
+
   });
 
   var input = /** @type {!HTMLInputElement} */(
