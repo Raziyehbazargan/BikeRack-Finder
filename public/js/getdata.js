@@ -52,11 +52,18 @@ var rackObj = {
   }
 }
 
-//remove all markers of nearest bike rack from map
-document.getElementById('clearMap').addEventListener('click',function(){
+function removeBikeRacksMarkers(){
   for (var i=0; i < mapMakers.length; i++) {
     mapMakers[i].setMap(null);
   }
+}
+//remove all markers of nearest bike rack from map
+document.getElementById('clearMap').addEventListener('click',function(){
+  removeBikeRacksMarkers();
   for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(null);  }
+    markers[i].setMap(null);
+  }
+});
+document.getElementById('slider').addEventListener('click',function(){
+  removeBikeRacksMarkers();
 });
