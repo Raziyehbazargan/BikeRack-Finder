@@ -3,7 +3,7 @@ var uLong;
 var latLongStorageArray=[];
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
-var userPinImg = '../img/icons/userPin.png'
+var userPinImg = '../img/Icons/userPin.png'
 var map;
 var markers = [];
 
@@ -72,8 +72,9 @@ function initMap() {
   var marker = new google.maps.Marker({
     position: map.center,
     map: map,
+    //Person's icon
     title: 'you are here!',
-    icon:'./img/icons/person.png'
+    icon:'../img/Icons/Person.png'
 
 });
 //call function
