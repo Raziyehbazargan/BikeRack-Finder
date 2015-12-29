@@ -2,23 +2,6 @@ nav li:hover, nav li a:hover {
   background-color:#9900CC;
 }
 
-.abimg {
-  width:10%;
-  margin-left: 20%;
-  display: inline-block;
-  float: left;
-  margin-right: 5%;
-  border: 3px solid #FF3333;
-  border-radius: 200px;
-}
-
-.abtxt {
-  width: 55%;
-  margin-right: 10%;
-  padding-top: 8px;
-  padding-bottom: 10px;
-}
-
 h5 {
   font-size: 1.1em;
   font-weight: bold;
@@ -281,17 +264,14 @@ h6 {
 .abimg {
   width: 15%;
   margin-left: 15%;
-  margin-right: 5%;
-  height: 84%;
   display: inline-block;
   position: relative;
-  border: 3px solid #FF3333;
-  border-radius: 200px;
-  overflow: hidden;
 }
 
 .abimg img {
   width: 100%;
+  border: 3px solid #FF3333;
+  border-radius: 200px;
 }
 
 .abtxt {
@@ -407,7 +387,7 @@ input[type=range]::-webkit-slider-runnable-track {
   height: 34.2px;
   cursor: pointer;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background: #fff;
+  background-image:url('../img/sliderbg.jpg');
   border-radius: 35px;
   border: 2px solid #FF3333;
 }
@@ -417,20 +397,18 @@ input[type=range]::-webkit-slider-thumb {
   height: 32px;
   width: 18%;
   border-radius: 50px;
-  background: #ffcccc;
+  background-image:url('../img/buttonbg.jpg');
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -0.4px;
 }
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #FFFFFC;
-}
+
 input[type=range]::-moz-range-track {
   width: 30%;
   height: 31.2px;
   cursor: pointer;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background: #fff;
+  background-image:url('../img/sliderbg.jpg');
   border-radius: 35px;
   border: 2px solid #FF3333;
 }
@@ -440,7 +418,7 @@ input[type=range]::-moz-range-thumb {
   height: 32px;
   width: 18%;
   border-radius: 50px;
-  background: #ffcccc;
+  background-image:url('../img/buttonbg.jpg');
   cursor: pointer;
 }
 input[type=range]::-ms-track {
