@@ -5,7 +5,7 @@ var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
 var userPinImg = '../img/Icons/userPin.png'
 var map;
-// var markers = [];
+var markers = [];
 
 if (window.navigator.geolocation) {
     var failure, success;
@@ -128,12 +128,14 @@ function initMap() {
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);
 
+
     //get new lat and long after change the address by auto complete
     console.log(map.getCenter());
     var newLoc = map.getCenter();
     uLat = newLoc.lat();
     uLong = newLoc.lng();
 // ...........................................................................
+
     var address = '';
     if (place.address_components) {
       address = [
@@ -160,7 +162,7 @@ function initMap() {
   setupClickListener('changetype-address', ['address']);
   setupClickListener('changetype-establishment', ['establishment']);
   setupClickListener('changetype-geocode', ['geocode']);
-
+}
   // ........................................................................
   // Add the marker at the clicked location on map, and add the label from the array of alphabetical characters.
   function addMarker(location) {
@@ -170,50 +172,8 @@ function initMap() {
       map: map,
       icon:userPinImg,
     });
-
-  //   markers.push(marker);
-  // }
-  //
-  // // Sets the map on all markers in the array.
-  // function setMapOnAll(map) {
-  //   for (var i = 0; i < markers.length; i++) {
-  //     markers[i].setMap(map);
-  //   }
-  // }
-  //
-  // // Hides markers from the map, but keeps them in the array.
-  // function clearMarkers() {
-  //   setMapOnAll(null);
-  //   // markers[markers.length -1].setMap(null)
-  // }
-  //
-  // var elclearMarkers = document.getElementById('clearMarkers');
-  // elclearMarkers.addEventListener('click',function(){
-  //   clearMarkers();
-  // }
-  //
-  // // Shows any markers currently in the array.
-  // function showMarkers() {
-  //   setMapOnAll(map);
-  // }
-  //
-  // var elshowMarkers = document.getElementById('showMarkers');
-  // elshowMarkers.addEventListener('click',function(){
-  //   showMarkers();
-  // }
-  //
-  // // Deletes all markers in the array by removing references to them.
-  // function eraseMarkers() {
-  //   clearMarkers();
-  //   markers = [];
-  // }
-  //
-  // var eldeleteMarkers = document.getElementById('noMarkers');
-  //
-  // eldeleteMarkers.addEventListener('click',function(){
-  //   eraseMarkers();
-  //   localStorage.removeItem('userMarkers');
-  // });
+    markers.push(marker);
+  }
 
   // ........................................................................
   // show the markers on saved point by user from local storage
@@ -229,4 +189,60 @@ function initMap() {
       console.log('not exist');
     }
   }
-}
+
+
+  // ........................................................................
+  // Deletes all markers in the array by removing references to them.
+   function eraseMarkers() {
+     clearMarkers();
+     markers = [];
+   }
+   var elDeleteMarkers = document.getElementById('noMarkers');
+   eldeleteMarkers.addEventListener('click',function(){
+     eraseMarkers();
+     localStorage.removeItem('userMarkers');
+   });
+
+   //   markers.push(marker);
+   // }
+   //
+   // // Sets the map on all markers in the array.
+   // function setMapOnAll(map) {
+   //   for (var i = 0; i < markers.length; i++) {
+   //     markers[i].setMap(map);
+   //   }
+   // }
+   //
+   // // Hides markers from the map, but keeps them in the array.
+   // function clearMarkers() {
+   //   setMapOnAll(null);
+   //   // markers[markers.length -1].setMap(null)
+   // }
+   //
+   // var elclearMarkers = document.getElementById('clearMarkers');
+   // elclearMarkers.addEventListener('click',function(){
+   //   clearMarkers();
+   // }
+   //
+   // // Shows any markers currently in the array.
+   // function showMarkers() {
+   //   setMapOnAll(map);
+   // }
+   //
+   // var elshowMarkers = document.getElementById('showMarkers');
+   // elshowMarkers.addEventListener('click',function(){
+   //   showMarkers();
+   // }
+   //
+   // // Deletes all markers in the array by removing references to them.
+   // function eraseMarkers() {
+   //   clearMarkers();
+   //   markers = [];
+   // }
+   //
+   // var eldeleteMarkers = document.getElementById('noMarkers');
+   //
+   // eldeleteMarkers.addEventListener('click',function(){
+   //   eraseMarkers();
+   //   localStorage.removeItem('userMarkers');
+   // });
